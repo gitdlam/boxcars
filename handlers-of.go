@@ -3,7 +3,8 @@ package boxcars
 import (
 	"fmt"
 	"os"
-	"regexp"
+	"path/filepath"
+	//	"regexp"
 )
 
 type Handlers map[string]*Handler
@@ -49,8 +50,10 @@ func handlersOf(options map[string]string) Handlers {
 }
 
 func isLocalPath(config string) bool {
-	matches, _ := regexp.MatchString("^/", config)
-	return matches
+
+	//	matches, _ := regexp.MatchString("^/", config)
+	//	return matches
+	return filepath.IsAbs(config)
 }
 
 func isSingleFile(uri string) bool {
